@@ -1,0 +1,45 @@
+/* Estilos de lujo para AutoLux */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizado estilo Scuderia */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff2800;
+    border-radius: 10px;
+}
+
+/* Efecto de cristal y profundidad para las cards de los vehículos */
+.card-lujo {
+    background: linear-gradient(145deg, #151515, #0a0a0a);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-lujo:hover {
+    box-shadow: 0 20px 40px rgba(255, 40, 0, 0.15);
+    border-color: #ff2800;
+    transform: translateY(-5px);
+}
+
+/* Filtros visuales para personalización de imágenes */
+.filtro-negro { 
+    filter: grayscale(100%) brightness(40%); 
+}
+
+.filtro-dorado { 
+    filter: sepia(1) saturate(5) hue-rotate(10deg); 
+}
+
+/* Ocultar scrollbar en modales específicos sin perder scroll */
+#modal-tabla::-webkit-scrollbar {
+    display: none;
+}
