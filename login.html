@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoLux - Login</title>
+
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #000000; 
+            height: 100vh;
+            margin: 0;
+            color: white;
+            overflow: hidden;
+        }
+
+        .header-nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .input-group {
+            margin-bottom: 35px;
+            text-align: left;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .input-style {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #222;
+            padding: 12px 0;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.4s ease;
+        }
+
+        .input-style:focus {
+            border-bottom-color: #444;
+        }
+
+        /* Botón Login Principal */
+        .btn-login {
+            border: 1px solid #ff2800;
+            background: transparent;
+            color: white;
+            width: 100%;
+            padding: 16px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #ff2800;
+        }
+
+        /* Botón Registro (Header) */
+        .btn-header-outline {
+            border: 1px solid #333;
+            padding: 8px 20px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-header-outline:hover {
+            border-color: white;
+            background: white;
+            color: black;
+        }
+
+        /* El nuevo botón de "¿No tienes cuenta?" */
+        .btn-text-link {
+            background: none;
+            border: none;
+            color: #555;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 0;
+            margin-right: 15px;
+        }
+
+        .btn-text-link:hover {
+            color: #ff2800; /* Se ilumina en rojo al pasar el mouse */
+        }
+
+        .logo-text {
+            font-weight: 700;
+            letter-spacing: 5px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center">
+
+    <div class="header-nav">
+        <div class="logo-text">
+            AUTO<span style="color: #ff2800;">LUX</span>
+        </div>
+        <div class="flex items-center">
+            <button onclick="registrarse()" class="btn-text-link">
+                ¿No tienes cuenta?
+            </button>
+            <button onclick="registrarse()" class="btn-header-outline">
+                Sign Up
+            </button>
+        </div>
+    </div>
+
+    <div class="login-box">
+        <div class="flex justify-center mb-16">
+            <img src="assets/img/icon-192.png" alt="AutoLux Logo" class="h-14 w-14">
+        </div>
+
+        <div class="px-4">
+            <div class="input-group">
+                <label class="input-label">Email Address</label>
+                <input type="email" id="email" class="input-style" placeholder="usuario@autolux.com" autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Password</label>
+                <input type="password" id="password" class="input-style" placeholder="••••••••">
+            </div>
+
+            <button onclick="iniciarSesion()" class="btn-login mt-4">
+                Login
+            </button>
+
+            <p id="error-msg" class="text-[#ff2800] text-[10px] uppercase tracking-widest mt-8 font-semibold min-h-[16px]"></p>
+        </div>
+    </div>
+
+    <script type="module" src="auth.js"></script>
+</body>
+</html>
