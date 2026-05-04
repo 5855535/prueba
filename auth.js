@@ -19,7 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// === INICIAR SESIÓN ===
+// === INICIAR SESIÓN CON EMAIL ===
 window.iniciarSesion = async () => {
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
@@ -90,6 +90,34 @@ window.registrarse = async () => {
         }
 
         errorMsg.textContent = mensaje;
+        errorMsg.classList.remove('hidden');
+    }
+};
+
+// === INICIAR CON BIOMETRÍA (Huella / Face ID) ===
+window.iniciarConBiometria = async () => {
+    const errorMsg = document.getElementById('error-msg');
+    errorMsg.classList.add('hidden');
+
+    // Verificar si el navegador soporta WebAuthn
+    if (!window.PublicKeyCredential) {
+        errorMsg.textContent = "Tu navegador o dispositivo no soporta huella digital / Face ID";
+        errorMsg.classList.remove('hidden');
+        return;
+    }
+
+    try {
+        // Nota: Esta es una implementación básica. En producción se necesita backend para challenge completo.
+        alert("🔐 Iniciando autenticación biométrica...\n\n(En esta versión de desarrollo se simula el proceso)");
+
+        // Simulación exitosa (cámbialo cuando tengas HTTPS + backend)
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1200);
+
+    } catch (error) {
+        console.error(error);
+        errorMsg.textContent = "No se pudo verificar la huella. Usa email y contraseña.";
         errorMsg.classList.remove('hidden');
     }
 };
