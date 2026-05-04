@@ -1,4 +1,4 @@
-// auth.js
+// auth.js - Versión mejorada para biometría
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { 
     getAuth, 
@@ -19,50 +19,50 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// === INICIAR SESIÓN EMAIL ===
-window.iniciarSesion = async () => { /* tu código actual sin cambios */ };
+// Login normal
+window.iniciarSesion = async () => {
+    // ... tu código actual ...
+};
 
-// === REGISTRARSE ===
-window.registrarse = async () => { /* tu código actual sin cambios */ };
+// Registro
+window.registrarse = async () => {
+    // ... tu código actual ...
+};
 
-// === BIOMETRÍA REAL (WebAuthn) ===
+// BIOMETRÍA - Versión más real posible
 window.iniciarConBiometria = async () => {
     const errorMsg = document.getElementById('error-msg');
     errorMsg.classList.add('hidden');
 
     if (!window.PublicKeyCredential) {
-        errorMsg.textContent = "Tu navegador no soporta autenticación biométrica";
+        errorMsg.textContent = "Biometría no soportada en este navegador";
         errorMsg.classList.remove('hidden');
         return;
     }
 
     try {
-        // Obtener challenge del servidor (simulado por ahora)
-        const publicKeyCredentialRequestOptions = {
-            challenge: new Uint8Array(32), // En producción viene del backend
+        // Esto es lo más cerca que podemos estar sin backend completo
+        const publicKey = {
+            challenge: new Uint8Array(32),
             timeout: 60000,
-            userVerification: "preferred",
+            userVerification: "required",
             rpId: window.location.hostname
         };
 
-        const assertion = await navigator.credentials.get({
-            publicKey: publicKeyCredentialRequestOptions
-        });
+        const assertion = await navigator.credentials.get({ publicKey });
 
         if (assertion) {
-            // Aquí iría verificación con backend
-            alert("✅ Autenticación biométrica exitosa");
+            // Éxito
             window.location.href = "index.html";
         }
-
-    } catch (error) {
-        console.error(error);
-        errorMsg.textContent = "No se pudo completar la autenticación biométrica. Usa email y contraseña.";
+    } catch (err) {
+        console.error(err);
+        errorMsg.textContent = "No se pudo autenticar con huella. Por favor usa email y contraseña.";
         errorMsg.classList.remove('hidden');
     }
 };
 
-// Redirección si ya está logueado
+// Auto login
 onAuthStateChanged(auth, (user) => {
     if (user && window.location.pathname.includes("login.html")) {
         window.location.href = "index.html";
