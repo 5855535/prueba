@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoLux</title>
+    <title>AutoLux - Acceso Exclusivo</title>
 
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -63,7 +63,7 @@
         }
 
         .input-style:focus {
-            border-bottom-color: #444;
+            border-bottom-color: #ff2800;
         }
 
         /* Botón Login Principal */
@@ -85,6 +85,27 @@
             background-color: #ff2800;
         }
 
+        /* Botón Biometría */
+        .btn-biometry {
+            border: 1px solid #333;
+            background: transparent;
+            color: white;
+            width: 100%;
+            padding: 16px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+        }
+
+        .btn-biometry:hover {
+            border-color: #ff2800;
+            color: #ff2800;
+        }
+
         /* Botón Registro (Header) */
         .btn-header-outline {
             border: 1px solid #333;
@@ -102,7 +123,6 @@
             color: black;
         }
 
-        /* El nuevo botón de "¿No tienes cuenta?" */
         .btn-text-link {
             background: none;
             border: none;
@@ -117,7 +137,7 @@
         }
 
         .btn-text-link:hover {
-            color: #ff2800; /* Se ilumina en rojo al pasar el mouse */
+            color: #ff2800;
         }
 
         .logo-text {
@@ -160,7 +180,12 @@
             </div>
 
             <button onclick="iniciarSesion()" class="btn-login mt-4">
-                Login
+                LOGIN
+            </button>
+
+            <!-- Botón de Biometría -->
+            <button onclick="iniciarConBiometria()" class="btn-biometry">
+                🔑 INICIAR CON HUELLA / FACE ID
             </button>
 
             <p id="error-msg" class="text-[#ff2800] text-[10px] uppercase tracking-widest mt-8 font-semibold min-h-[16px]"></p>
